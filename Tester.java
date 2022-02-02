@@ -4,21 +4,28 @@
 public class Tester {
 
 	public static void main(String[] args) {
-		Person p = new Person();
-		Student s = new Student();
-		Undergrad u = new Undergrad();
 		
-		System.out.println(p);
-		System.out.println(s);
-		System.out.println(u);
+		//Shape s = newShape();  //"s" becomes an instance of 'Shape', error
 		
-		Person[] people = new Person[3];
-		people[0] = new Person("asdf");
-		people[1] = new Student("asdf2",4); //polymorphism
-		people[2] = new Undergrad("asdf3",5,2);
+		Shape s = new BasicShape(); //no error because "BasicShape" is a class that implements--that is a shape
 		
-		for(int i=0; i<people.length;i++)
-			System.out.println(people[i]);
+		s.drawShape();
+		
+		Shape[] shapes = new Shape[11]; //this is creating an array of 'Shapes[11]'
+		
+		shapes[0] = new BasicShape();
+		shapes[1] = new BasicShape(4);
+		shapes[2] = new BasicRectangle(0,2,3);
+		shapes[3] = new BasicRectangle(2,3,4);
+		
+		for(int i =0; i< shapes.length;i++)
+		{
+			if(shapes[i] != null)
+			{
+				//shapes[i].drawShape();
+				shapes[i].drawShapeAt(i);
+			}
+		}
 	}
 
 }
